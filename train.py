@@ -120,5 +120,5 @@ if __name__ == "__main__":
         # 4.3. Save the model if the validation accuracy is increasing
         if val_acc > max_acc:
             print(f'Validation accuracy increased ({max_acc} --> {val_acc}). Model saved')
-            torch.save(model.state_dict(), path/'checkpoints/epoch_' + str(epoch) + '_acc_{0:.4f}'.format(max_acc) + '.pt')
+            torch.save(model.state_dict(),'checkpoints/epoch_' + str(epoch) + '_acc_{0:.4f}'.format(max_acc) + '.pt')
             max_acc = val_acc
