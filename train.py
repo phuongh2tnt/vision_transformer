@@ -105,9 +105,9 @@ if __name__ == "__main__":
     #cua torchvision cu
     #num_features = model.fc.in_features
     #model.fc = torch.nn.Linear(num_features, 2)
-    num_classes=2
-    num_features = model.fc.in_features
-    model.fc = nn.Linear(num_features, num_classes)
+    #num_classes=2
+    #num_features = model.fc.in_features
+    3model.fc = nn.Linear(num_features, num_classes)
     model.to('cuda')
 
     # 4. Specify loss function and optimizer
