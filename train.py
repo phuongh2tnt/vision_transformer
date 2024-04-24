@@ -4,6 +4,8 @@ How to train/fine-tune a pre-trained model on a custom dataset (i.e., transfer l
 """
 import torch
 import timm
+#sua code nay cho fine tune
+import torch.nn as nn
 from tqdm import tqdm
 from torch.optim import Adam
 from torch.utils.data import DataLoader
@@ -100,14 +102,19 @@ if __name__ == "__main__":
 
     # 4. Note that the model pre-trained model has 1,000 output neurons (because ImageNet has 1,000 classes), so we must
     # customize the last linear layer to adapt to our 2-class problem (i.e., Cat vs Dog)
+    #cua torchvision cu
+    #num_features = model.fc.in_features
+    #model.fc = torch.nn.Linear(num_features, 2)
+    num_classes=2
     num_features = model.fc.in_features
-    model.fc = torch.nn.Linear(num_features, 2)
+    model.fc = nn.Linear(num_features, num_classes)
     model.to('cuda')
 
     # 4. Specify loss function and optimizer
     optimizer = Adam(model.parameters(), lr=1e-4)
-    loss_fn = torch.nn.CrossEntropyLoss()
-
+    #loss_fn = torch.nn.CrossEntropyLoss()
+    #ham mat mat moi theo kieu timm
+    loss_fn = nn.CrossEntropyLoss()
     # 5. Train the model with 100 epochs
     max_acc = 0
     for epoch in range(100):
