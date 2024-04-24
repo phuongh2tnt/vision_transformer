@@ -3,6 +3,7 @@ Thanh Le  16 April 2024
 How to train/fine-tune a pre-trained model on a custom dataset (i.e., transfer learning)
 """
 import torch
+import timm
 from tqdm import tqdm
 from torch.optim import Adam
 from torch.utils.data import DataLoader
@@ -92,8 +93,10 @@ if __name__ == "__main__":
     val_loader = DataLoader(val_dataset, batch_size=32, shuffle=True)
 
     # 3. Create a new deep model with pre-trained weights
-    import torchvision.models as models
-    model = models.googlenet(weights='IMAGENET1K_V1')
+    #import torchvision.models as models
+    #model = models.googlenet(weights='IMAGENET1K_V1')
+    #3.1. Create a new deep model use timm
+    model=timm.create_model(model_name: 'hrnet_w18', pretrained=True, num_classes=2).to('cuda')
 
     # 4. Note that the model pre-trained model has 1,000 output neurons (because ImageNet has 1,000 classes), so we must
     # customize the last linear layer to adapt to our 2-class problem (i.e., Cat vs Dog)
