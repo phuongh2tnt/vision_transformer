@@ -128,7 +128,7 @@ map_values = []
 
 # Loop through epochs
 for epoch in range(100):
-     train_loss, train_acc = train_model()
+    train_loss, train_acc = train_model()
     
     # Validate the model
     val_loss, val_acc = validate_model()
