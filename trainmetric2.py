@@ -35,7 +35,7 @@ def train_model():
 
         prediction = logits.argmax(axis=1)
         train_acc += accuracy(prediction, label, task='multiclass', average='macro', num_classes=2).item()
-        train_f1 += f1_score(prediction, label, average='macro', num_classes=2).item()
+        train_f1 += f1_score(prediction, label, average='macro').item()
         train_precision += precision(prediction, label, average='macro', num_classes=2).item()
 
     return train_loss / len(train_loader), train_acc / len(train_loader), train_f1 / len(train_loader), train_precision / len(train_loader)
@@ -61,7 +61,7 @@ def validate_model():
 
             prediction = logits.argmax(axis=1)
             val_acc += accuracy(prediction, label, task='multiclass', average='macro', num_classes=2).item()
-            val_f1 += f1_score(prediction, label, average='macro', num_classes=2).item()
+            val_f1 += f1_score(prediction, label, average='macro').item()
             val_precision += precision(prediction, label, average='macro', num_classes=2).item()
 
     return valid_loss / len(val_loader), val_acc / len(val_loader), val_f1 / len(val_loader), val_precision / len(val_loader)
