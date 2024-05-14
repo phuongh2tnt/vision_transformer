@@ -89,8 +89,8 @@ if __name__ == "__main__":
 
     # 1. Load the dataset
     transform = transforms.Compose([Resize((256, 256)), ToTensor()])
-    train_dataset = ImageFolder(root='dataset/cat_dog/train', transform=transform)
-    val_dataset = ImageFolder(root='dataset/cat_dog/test', transform=transform)
+    train_dataset = ImageFolder(root='/content/drive/My Drive/AI/el/dlgonet/datasetelearning/train', transform=transform)
+    val_dataset = ImageFolder(root='/content/drive/My Drive/AI/el/dlgonet/datasetelearning/test', transform=transform)
 
     # 2. Create data loaders
     train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
@@ -150,7 +150,7 @@ for epoch in range(100):
     print(f'Epoch {epoch}: Validation loss = {val_loss}, Validation accuracy: {val_acc}, Precision: {precision}, F1-score: {f1}, mAP: {map_score}')
     if val_acc > max_acc:
             print(f'Validation accuracy increased ({max_acc} --> {val_acc}). Model saved')
-            torch.save(model.state_dict(),'checkpoints/epoch_' + str(epoch) + '_acc_{0:.4f}'.format(max_acc) + '.pt')
+            torch.save(model.state_dict(),'/content/drive/My Drive/AI/el/dlgonet/checkpoints/epoch_' + str(epoch) + '_acc_{0:.4f}'.format(max_acc) + '.pt')
             max_acc = val_acc
 # Plotting the validation loss
 plt.figure(figsize=(10, 5))
