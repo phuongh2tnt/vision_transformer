@@ -14,6 +14,7 @@ from torchvision.datasets import ImageFolder
 import torchvision.transforms as transforms
 from torchmetrics.functional import accuracy
 from torchvision.transforms import ToTensor, Resize
+from sklearn.metrics import precision_score, f1_score, average_precision_score
 
 
 def train_model():
@@ -95,48 +96,62 @@ if __name__ == "__main__":
     train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
     val_loader = DataLoader(val_dataset, batch_size=32, shuffle=True)
 
-    # 3. Create a new deep model with pre-trained weights
-    #import torchvision.models as models
-    #model = models.googlenet(weights='IMAGENET1K_V1')
-    #3.1. Create a new deep model use timm
-    model=timm.create_model('hrnet_w18', pretrained=True, num_classes=2).to('cuda')
+    # 3. Create a new deep model with pre-trained weights of googlenet
+    import torchvision.models as models
+    model = models.googlenet(weights='IMAGENET1K_V1')
+    #3.1. Create a new deep model use timm của hrnet
+    #model=timm.create_model('hrnet_w18', pretrained=True, num_classes=2).to('cuda')
 
     # 4. Note that the model pre-trained model has 1,000 output neurons (because ImageNet has 1,000 classes), so we must
     # customize the last linear layer to adapt to our 2-class problem (i.e., Cat vs Dog)
     #cua torchvision cu
-    #num_features = model.fc.in_features
-    #model.fc = torch.nn.Linear(num_features, 2)
-    #num_classes=2
-    #num_features = model.fc.in_features
-    #model.fc = nn.Linear(num_features, num_classes)
+    num_features = model.fc.in_features
+    model.fc = torch.nn.Linear(num_features, 2)
+    num_classes=2
+    num_features = model.fc.in_features
+    model.fc = nn.Linear(num_features, num_classes)
     model.to('cuda')
 
     # 4. Specify loss function and optimizer
     optimizer = Adam(model.parameters(), lr=1e-4)
-    #loss_fn = torch.nn.CrossEntropyLoss()
+    loss_fn = torch.nn.CrossEntropyLoss()
     #ham mat mat moi theo kieu timm
-    loss_fn = nn.CrossEntropyLoss()
+    #loss_fn = nn.CrossEntropyLoss()
     # 5. Train the model with 100 epochs
     max_acc = 0
     # Initialize empty lists to store validation loss and accuracy for each epoch
 validation_loss_values = []
 validation_accuracy_values = []
+precision_values = []
+f1_values = []
+map_values = []
 
 # Loop through epochs
 for epoch in range(100):
-    # Train the model for one epoch
-    train_loss, train_acc = train_model()
+     train_loss, train_acc = train_model()
     
     # Validate the model
     val_loss, val_acc = validate_model()
     
-    # Append validation loss and accuracy to the lists
+    # Calculate additional metrics
+    # Assuming you have true_labels and predicted_labels for the validation set
+    precision = precision_score(true_labels, predicted_labels, average='macro')
+    f1 = f1_score(true_labels, predicted_labels, average='macro')
+    map_score = average_precision_score(true_labels, predicted_scores)
+    
+    # Append the metrics to the lists
     validation_loss_values.append(val_loss)
     validation_accuracy_values.append(val_acc)
+    precision_values.append(precision)
+    f1_values.append(f1)
+    map_values.append(map_score)
     
-    # Print the epoch number, validation loss, and validation accuracy
-    print(f'Epoch {epoch}: Validation loss = {val_loss}, Validation accuracy: {val_acc}')
-
+    # Print the epoch number, validation loss, validation accuracy, precision, F1-score, and mAP
+    print(f'Epoch {epoch}: Validation loss = {val_loss}, Validation accuracy: {val_acc}, Precision: {precision}, F1-score: {f1}, mAP: {map_score}')
+    if val_acc > max_acc:
+            print(f'Validation accuracy increased ({max_acc} --> {val_acc}). Model saved')
+            torch.save(model.state_dict(),'checkpoints/epoch_' + str(epoch) + '_acc_{0:.4f}'.format(max_acc) + '.pt')
+            max_acc = val_acc
 # Plotting the validation loss
 plt.figure(figsize=(10, 5))
 plt.plot(range(1, 101), validation_loss_values, label='Validation Loss', color='red')
@@ -153,6 +168,18 @@ plt.plot(range(1, 101), validation_accuracy_values, label='Validation Accuracy',
 plt.xlabel('Epoch')
 plt.ylabel('Accuracy')
 plt.title('Validation Accuracy over Epochs')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Plotting precision, F1-score, and mAP
+plt.figure(figsize=(10, 5))
+plt.plot(range(1, 101), precision_values, label='Precision', color='green')
+plt.plot(range(1, 101), f1_values, label='F1-score', color='orange')
+plt.plot(range(1, 101), map_values, label='mAP', color='purple')
+plt.xlabel('Epoch')
+plt.ylabel('Score')
+plt.title('Precision, F1-score, and mAP over Epochs')
 plt.legend()
 plt.grid(True)
 plt.show()
