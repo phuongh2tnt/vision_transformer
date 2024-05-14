@@ -129,10 +129,8 @@ map_values = []
 # Loop through epochs
 for epoch in range(100):
     train_loss, train_acc = train_model()
-    
     # Validate the model
     val_loss, val_acc = validate_model()
-    
     # Calculate additional metrics
     # Assuming you have true_labels and predicted_labels for the validation set
     precision = precision_score(true_labels, predicted_labels, average='macro')
