@@ -1,15 +1,17 @@
 import torch
 import timm
+#sua code nay cho fine tune
 import torch.nn as nn
+import matplotlib.pyplot as plt #De ve bieu do
 from tqdm import tqdm
 from torch.optim import Adam
 from torch.utils.data import DataLoader
 from torchvision.datasets import ImageFolder
 import torchvision.transforms as transforms
-#from torchmetrics.functional import accuracy, f1, precision
+from torchmetrics.functional import accuracy
 from torchvision.transforms import ToTensor, Resize
-import matplotlib.pyplot as plt
 from sklearn.metrics import precision_score, f1_score, average_precision_score
+
 
 def train_model():
     """
