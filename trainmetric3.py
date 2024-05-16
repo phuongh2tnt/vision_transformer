@@ -6,6 +6,7 @@ import torch
 import timm
 #sua code nay cho fine tune
 import torch.nn as nn
+import matplotlib.pyplot as plt
 from tqdm import tqdm
 from torch.optim import Adam
 from torch.utils.data import DataLoader
@@ -13,6 +14,7 @@ from torchvision.datasets import ImageFolder
 import torchvision.transforms as transforms
 from torchmetrics.functional import accuracy
 from torchvision.transforms import ToTensor, Resize
+
 
 
 def train_model():
