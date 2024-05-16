@@ -148,7 +148,7 @@ if __name__ == "__main__":
     val_accs=np.array(acc_vals)
     train_losss=np.array(loss_trains)
     val_losss=np.array(loss_vals)
-    print(train_accs[1])
+    print(train_accs)
     # Plotting
     plt.figure(figsize=(12, 6))
 
