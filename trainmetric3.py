@@ -142,7 +142,9 @@ if __name__ == "__main__":
             print(f'Validation accuracy increased ({max_acc} --> {val_acc}). Model saved')
             torch.save(model.state_dict(),'/content/drive/My Drive/AI/el/checkpoints/2epoch_' + str(epoch) + '_acc_{0:.4f}'.format(max_acc) + '.pt')
             max_acc = val_acc
-      # Plotting
+    #in mang
+    print(acc_trains)
+    # Plotting
     plt.figure(figsize=(12, 6))
 
     plt.subplot(2, 2, 1)
