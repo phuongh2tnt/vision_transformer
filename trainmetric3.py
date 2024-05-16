@@ -14,6 +14,7 @@ from torchvision.datasets import ImageFolder
 import torchvision.transforms as transforms
 from torchmetrics.functional import accuracy
 from torchvision.transforms import ToTensor, Resize
+import numpy as np
 
 
 
@@ -143,13 +144,17 @@ if __name__ == "__main__":
             torch.save(model.state_dict(),'/content/drive/My Drive/AI/el/checkpoints/2epoch_' + str(epoch) + '_acc_{0:.4f}'.format(max_acc) + '.pt')
             max_acc = val_acc
     #in mang
-    print(acc_trains)
+    train_accs=np.array(acc_trains)
+    val_accs=np.array(acc_vals)
+    train_losss=np.array(loss_trains)
+    val_losss=np.array(loss_vals)
+    print(train_accs)
     # Plotting
     plt.figure(figsize=(12, 6))
 
     plt.subplot(2, 2, 1)
-    plt.plot(range(epochs), acc_trains, label='Training Accuracy')
-    plt.plot(range(epochs), acc_vals, label='Validation Accuracy')
+    plt.plot(range(epochs), train_accs, label='Training Accuracy')
+    plt.plot(range(epochs), val_accs, label='Validation Accuracy')
     plt.xlabel('Epochs')
     plt.ylabel('Accuracy')
     plt.title('Accuracy vs. Epochs')
@@ -158,8 +163,8 @@ if __name__ == "__main__":
     plt.show()
 
     plt.subplot(2, 2, 2)
-    plt.plot(range(epochs), loss_trains, label='Training Loss')
-    plt.plot(range(epochs), loss_vals, label='Validation Loss')
+    plt.plot(range(epochs), train_losss, label='Training Loss')
+    plt.plot(range(epochs), val_losss, label='Validation Loss')
     plt.xlabel('Epochs')
     plt.ylabel('Loss')
     plt.title('Loss vs. Epochs')
