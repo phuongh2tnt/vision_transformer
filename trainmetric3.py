@@ -166,8 +166,8 @@ if __name__ == "__main__":
     plt.figure(figsize=(12, 6))
 
     #plt.subplot(2, 2, 1)
-    plt.plot(range(train_accs, 'g', label='Training Accuracy')
-    plt.plot(range(val_accs,'b', label='Validation Accuracy')
+    plt.plot(train_accs, 'g', label='Training Accuracy')
+    plt.plot(val_accs,'b', label='Validation Accuracy')
     plt.xlabel('Epochs')
     plt.ylabel('Accuracy')
     plt.title('Accuracy vs. Epochs')
