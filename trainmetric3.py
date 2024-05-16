@@ -143,6 +143,7 @@ if __name__ == "__main__":
             print(f'Validation accuracy increased ({max_acc} --> {val_acc}). Model saved')
             torch.save(model.state_dict(),'/content/drive/My Drive/AI/el/checkpoints/2epoch_' + str(epoch) + '_acc_{0:.4f}'.format(max_acc) + '.pt')
             max_acc = val_acc
+    
     #in mang
     train_accs=np.array(acc_trains)
     val_accs=np.array(acc_vals)
@@ -150,6 +151,17 @@ if __name__ == "__main__":
     val_losss=np.array(loss_vals)
     second = [row[1] for row in train_accs]
     print(second)
+    print("Ve mo hinh"
+    x = [row[0] for row in train_accs]
+    y = [row[1] for row in train_accs]
+
+    # Plot
+    plt.plot(x, y, marker='o', linestyle='-')
+    plt.xlabel('X')
+    plt.ylabel('Y')
+    plt.title('Plot of Data')
+    plt.grid(True)
+    plt.show()
     # Plotting
     plt.figure(figsize=(12, 6))
 
