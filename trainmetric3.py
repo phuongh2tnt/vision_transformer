@@ -123,7 +123,7 @@ if __name__ == "__main__":
     acc_vals=[]
     loss_trains=[]
     loss_vals=[]
-    epochs=100
+    epochs=5
     for epoch in range(epochs):
 
         # 5.1. Train the model over a single epoch
@@ -140,7 +140,7 @@ if __name__ == "__main__":
         # 4.3. Save the model if the validation accuracy is increasing
         if val_acc > max_acc:
             print(f'Validation accuracy increased ({max_acc} --> {val_acc}). Model saved')
-            torch.save(model.state_dict(),'/content/drive/My Drive/AI/el/checkpoints/epoch_' + str(epoch) + '_acc_{0:.4f}'.format(max_acc) + '.pt')
+            torch.save(model.state_dict(),'/content/drive/My Drive/AI/el/checkpoints/2epoch_' + str(epoch) + '_acc_{0:.4f}'.format(max_acc) + '.pt')
             max_acc = val_acc
       # Plotting
     plt.figure(figsize=(12, 6))
