@@ -152,7 +152,7 @@ if __name__ == "__main__":
     # Plotting
     plt.figure(figsize=(12, 6))
 
-    plt.subplot(2, 2, 1)
+    #plt.subplot(2, 2, 1)
     plt.plot(range(epochs), train_accs, label='Training Accuracy')
     plt.plot(range(epochs), val_accs, label='Validation Accuracy')
     plt.xlabel('Epochs')
@@ -162,7 +162,7 @@ if __name__ == "__main__":
     plt.grid(True)
     plt.show()
 
-    plt.subplot(2, 2, 2)
+    #plt.subplot(2, 2, 2)
     plt.plot(range(epochs), train_losss, label='Training Loss')
     plt.plot(range(epochs), val_losss, label='Validation Loss')
     plt.xlabel('Epochs')
