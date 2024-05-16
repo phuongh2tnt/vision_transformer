@@ -94,27 +94,27 @@ if __name__ == "__main__":
     train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
     val_loader = DataLoader(val_dataset, batch_size=32, shuffle=True)
 
-    # 3. Create a new deep model with pre-trained weights
-    #import torchvision.models as models
-    #model = models.googlenet(weights='IMAGENET1K_V1')
+    # 3. Create a new deep model with pre-trained weights googlenet
+    import torchvision.models as models
+    model = models.googlenet(weights='IMAGENET1K_V1')
     #3.1. Create a new deep model use timm
-    model=timm.create_model('hrnet_w18', pretrained=True, num_classes=2).to('cuda')
+    #model=timm.create_model('hrnet_w18', pretrained=True, num_classes=2).to('cuda')
 
     # 4. Note that the model pre-trained model has 1,000 output neurons (because ImageNet has 1,000 classes), so we must
     # customize the last linear layer to adapt to our 2-class problem (i.e., Cat vs Dog)
     #cua torchvision cu
-    #num_features = model.fc.in_features
-    #model.fc = torch.nn.Linear(num_features, 2)
-    #num_classes=2
-    #num_features = model.fc.in_features
-    #model.fc = nn.Linear(num_features, num_classes)
+    num_features = model.fc.in_features
+    model.fc = torch.nn.Linear(num_features, 2)
+    num_classes=2
+    num_features = model.fc.in_features
+    model.fc = nn.Linear(num_features, num_classes)
     model.to('cuda')
 
     # 4. Specify loss function and optimizer
     optimizer = Adam(model.parameters(), lr=1e-4)
-    #loss_fn = torch.nn.CrossEntropyLoss()
+    loss_fn = torch.nn.CrossEntropyLoss()
     #ham mat mat moi theo kieu timm
-    loss_fn = nn.CrossEntropyLoss()
+    #loss_fn = nn.CrossEntropyLoss()
     # 5. Train the model with 100 epochs
     max_acc = 0
     acc_trains=[]
