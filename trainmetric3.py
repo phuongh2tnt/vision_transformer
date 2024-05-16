@@ -151,7 +151,7 @@ if __name__ == "__main__":
     val_losss=np.array(loss_vals)
     second = [row[1] for row in train_accs]
     print(second)
-    print("Ve mo hinh"
+    print("Ve mo hinh")
     x = [row[0] for row in train_accs]
     y = [row[1] for row in train_accs]
 
