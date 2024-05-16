@@ -123,7 +123,7 @@ if __name__ == "__main__":
     acc_vals=[]
     loss_trains=[]
     loss_vals=[]
-    epochs=5
+    epochs=3
     for epoch in range(epochs):
 
         # 5.1. Train the model over a single epoch
@@ -153,6 +153,7 @@ if __name__ == "__main__":
     plt.title('Accuracy vs. Epochs')
     plt.legend()
     plt.grid(True)
+    plt.show()
 
     plt.subplot(2, 2, 2)
     plt.plot(range(epochs), loss_trains, label='Training Loss')
@@ -162,3 +163,4 @@ if __name__ == "__main__":
     plt.title('Loss vs. Epochs')
     plt.legend()
     plt.grid(True)
+    plt.show()
