@@ -25,6 +25,9 @@ def train_model():
     """
     train_loss = 0.0
     train_acc = 0.0
+    train_pre=0.0
+    train_recall=0.0
+    train_f1=0.0
     model.train()
 
     for (img, label) in tqdm(train_loader, ncols=80, desc='Training'):
@@ -52,8 +55,11 @@ def train_model():
         # Get the predictions to calculate the accuracy for every iteration. Remember to accumulate the accuracy
         prediction = logits.argmax(axis=1)
         train_acc += accuracy(prediction, label, task='multiclass', average='macro', num_classes=2).item()
+        train_pre+=precision(prediction, label, task='multiclass', average='macro', num_classes=2).item()
+        train_rec_=recall(prediction, label, task='multiclass', average='macro', num_classes=2).item()
+        train_f1+=f1_score(prediction, label, task='multiclass', average='macro', num_classes=2).item()
 
-    return train_loss / len(train_loader), train_acc / len(train_loader)
+    return train_loss / len(train_loader), train_acc / len(train_loader),train_pre / len(train_loader),train_rec / len(train_loader), train_f1 / len(train_loader)
 
 
 def validate_model():
@@ -64,7 +70,9 @@ def validate_model():
     model.eval()
     valid_loss = 0.0
     val_acc = 0.0
-
+    val_pre=0.0
+    val_recall=0.0
+    val_f1=0.0
     with torch.no_grad():
         for (img, label) in tqdm(val_loader, ncols=80, desc='Valid'):
             # Get a batch
@@ -82,8 +90,10 @@ def validate_model():
             # Get the predictions to calculate the accuracy for every iteration. Remember to accumulate the accuracy
             prediction = logits.argmax(axis=1)
             val_acc += accuracy(prediction, label, task='multiclass', average='macro', num_classes=2).item()
-
-    return valid_loss / len(val_loader), val_acc / len(val_loader)
+            val_pre+=precision(prediction, label, task='multiclass', average='macro', num_classes=2).item()
+            val_rec_=recall(prediction, label, task='multiclass', average='macro', num_classes=2).item()
+            val_f1+=f1_score(prediction, label, task='multiclass', average='macro', num_classes=2).item()
+    return valid_loss / len(val_loader), val_acc / len(val_loader),val_pre / len(val_loader),val_rec / len(val_loader), val_f1 / len(val_loader)
 
 
 if __name__ == "__main__":
@@ -128,10 +138,14 @@ if __name__ == "__main__":
     for epoch in range(epochs):
 
         # 5.1. Train the model over a single epoch
-        train_loss, train_acc = train_model()
+        #train_loss, train_acc = train_model()
+        #Tinh them metric
+        train_loss, train_acc,train_pre,train_rec, train_f1 = train_model()
 
         # 5.2. Validate the model after training
-        val_loss, val_acc = validate_model()
+        #val_loss, val_acc = validate_model()
+        #Tinh them metric
+        val_loss, val_acc,val_pre,val_rec, val_f1 = validate_model()
 
         print(f'Epoch {epoch}: Validation loss = {val_loss}, Validation accuracy: {val_acc}')
         acc_trains.append((epoch, train_acc))
@@ -202,24 +216,28 @@ if __name__ == "__main__":
     plt.grid(True)
     plt.savefig('/content/drive/My Drive/AI/el/checkpoints/val_loss.png')
     plt.show()
-    # Plotting
-    plt.figure(figsize=(12, 6))
-    plt.subplot(2, 2, 1)
-    plt.plot(train_accs, 'g', label='Training Accuracy')
-    plt.plot(val_accs,'b', label='Validation Accuracy')
-    plt.xlabel('Epochs')
-    plt.ylabel('Accuracy')
-    plt.title('Accuracy vs. Epochs')
-    plt.legend()
-    plt.grid(True)
-    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/trainacc2.png')
-    plt.show()
     
-    plt.subplot(2, 2, 2)
-    plt.plot(train_losss, 'g',label='Training Loss')
-    plt.plot(val_losss, 'b',label='Validation Loss')
-    plt.xlabel('Epochs')
-    plt.ylabel('Loss')
+   #-----------------------metric moi-----------
+    x = [row[0] for row in train_accs]
+    y = [row[1] for row in train_accs]
+    
+    # Plot
+    plt.plot(x, y, marker='o', linestyle='-')
+    plt.xlabel('epoch')
+    plt.ylabel('Trainning Accuracy')
+    plt.title('Trainning Accuracy vs. Epochs')
+    plt.grid(True)
+    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/train_acc.png')
+    plt.show()
+    #plt.savefig('/content/drive/My Drive/AI/el/checkpoints/trainacc2.png')
+    
+    #plt.show()
+    
+    #plt.subplot(2, 2, 2)
+    #plt.plot(train_losss, 'g',label='Training Loss')
+    #plt.plot(val_losss, 'b',label='Validation Loss')
+    #plt.xlabel('Epochs')
+    #plt.ylabel('Loss')
     plt.title('Loss vs. Epochs')
     plt.legend()
     plt.grid(True)
