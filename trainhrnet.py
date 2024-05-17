@@ -118,10 +118,16 @@ if __name__ == "__main__":
     # customize the last linear layer to adapt to our 2-class problem (i.e., Cat vs Dog)
     #cua torchvision cu
     #num_features = model.fc.in_features
-    model.fc = torch.nn.Linear(num_features, 2)
-    num_classes=2
-    num_features = model.fc.in_features
-    model.fc = nn.Linear(num_features, num_classes)
+    #model.fc = torch.nn.Linear(num_features, 2)
+    #num_classes=2
+    #num_features = model.fc.in_features
+    #model.fc = nn.Linear(num_features, num_classes)
+    #----------Dùng hrnet----------
+    # Lấy số lượng đặc trưng đầu vào của lớp fully connected cuối cùng
+    num_features = model.head.fc.in_features
+
+    # Thay thế lớp fully connected cuối cùng bằng một lớp mới với 2 đầu ra (Mèo và Chó)
+    model.head.fc = torch.nn.Linear(num_features, 2)
     model.to('cuda')
 
     # 4. Specify loss function and optimizer
