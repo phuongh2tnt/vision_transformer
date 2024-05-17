@@ -288,8 +288,8 @@ if __name__ == "__main__":
     # Plot
     plt.plot(x6, y6, marker='o', linestyle='-')
     plt.xlabel('epoch')
-    plt.ylabel('Trainning recal')
-    plt.title('Trainning recal vs. Epochs')
+    plt.ylabel('Trainning recall')
+    plt.title('Trainning recall vs. Epochs')
     plt.legend()
     plt.grid(True)
     plt.savefig('/content/drive/My Drive/AI/el/checkpoints/rec_train.png')
@@ -301,8 +301,8 @@ if __name__ == "__main__":
     # Plot
     plt.plot(x7, y7, marker='o', linestyle='-')
     plt.xlabel('epoch')
-    plt.ylabel('Validation recal')
-    plt.title('Validation recal vs. Epochs')
+    plt.ylabel('Validation recall')
+    plt.title('Validation recall vs. Epochs')
     plt.legend()
     plt.grid(True)
     plt.savefig('/content/drive/My Drive/AI/el/checkpoints/rec_val.png')
