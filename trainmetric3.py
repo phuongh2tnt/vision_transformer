@@ -151,21 +151,59 @@ if __name__ == "__main__":
     val_losss=np.array(loss_vals)
     second = [row[1] for row in train_accs]
     print(second)
-    print("Ve mo hinh")
+    print("Ve mo hinh train_accs")
     x = [row[0] for row in train_accs]
     y = [row[1] for row in train_accs]
     
     # Plot
     plt.plot(x, y, marker='o', linestyle='-')
-    plt.xlabel('X')
-    plt.ylabel('Y')
-    plt.title('Plot of Data')
+    plt.xlabel('epoch')
+    plt.ylabel('Trainning Accuracy')
+    plt.title('Trainning Accuracy vs. Epochs')
     plt.grid(True)
-    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/trainacc.png')
+    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/train_acc.png')
+    plt.show()
+    # Plotting
+    print("Ve mo hinh val_accs")
+    x1 = [row[0] for row in val_accs]
+    y1 = [row[1] for row in val_accs]
+    
+    # Plot
+    plt.plot(x1, y1, marker='o', linestyle='-')
+    plt.xlabel('epoch')
+    plt.ylabel('Validation Accuracy')
+    plt.title('Validation Accuray vs. Epochs')
+    plt.grid(True)
+    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/val_acc.png')
     plt.show()
     # Plotting
     plt.figure(figsize=(12, 6))
+    print("Ve mo hinh train_loss")
+    x2 = [row[0] for row in train_losss]
+    y2 = [row[1] for row in train_losss]
     
+    # Plot
+    plt.plot(x2, y2, marker='o', linestyle='-')
+    plt.xlabel('epoch')
+    plt.ylabel('Trainning Loss')
+    plt.title('Trainning Loss vs. Epochs')
+    plt.grid(True)
+    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/train_loss.png')
+    plt.show()
+    print("Ve mo hinh val_loss")
+    x3 = [row[0] for row in val_losss]
+    y3 = [row[1] for row in val_losss]
+    
+    # Plot
+    plt.plot(x3, y3, marker='o', linestyle='-')
+    plt.xlabel('epoch')
+    plt.ylabel('Validation Loss')
+    plt.title('Validation Loss vs. Epochs')
+    plt.grid(True)
+    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/val_loss.png')
+    plt.show()
+    # Plotting
+    plt.figure(figsize=(12, 6))
     plt.subplot(2, 2, 1)
     plt.plot(train_accs, 'g', label='Training Accuracy')
     plt.plot(val_accs,'b', label='Validation Accuracy')
