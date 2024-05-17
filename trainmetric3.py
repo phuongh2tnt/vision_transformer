@@ -173,11 +173,11 @@ if __name__ == "__main__":
         loss_trains.append((epoch, train_loss))
         loss_vals.append((epoch, val_loss))
         pre_trains.append((epoch, train_pre)
-        pre_vals.append((epoch, val_pre)
-        rec_trains.append((epoch, train_rec)
-        rec_vals.append((epoch, val_rec)
-        f1_trains.append((epoch, train_f1)
-        f1_vals.append((epoch, val_f1)
+        pre_vals.append((epoch, val_pre))
+        rec_trains.append((epoch, train_rec))
+        rec_vals.append((epoch, val_rec))
+        f1_trains.append((epoch, train_f1))
+        f1_vals.append((epoch, val_f1))
         # 4.3. Save the model if the validation accuracy is increasing
         if val_acc > max_acc:
             print(f'Validation accuracy increased ({max_acc} --> {val_acc}). Model saved')
