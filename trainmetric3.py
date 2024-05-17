@@ -13,6 +13,7 @@ from torch.utils.data import DataLoader
 from torchvision.datasets import ImageFolder
 import torchvision.transforms as transforms
 from torchmetrics.functional import accuracy
+from torchmetrics.functional import precision, f1_score, recall
 from torchvision.transforms import ToTensor, Resize
 import numpy as np
 
