@@ -120,7 +120,7 @@ if __name__ == "__main__":
     #num_features = model.fc.in_features
     #model.fc = torch.nn.Linear(num_features, 2)
     num_classes=2
-    num_features = model.fc.in_features
+    #num_features = model.fc.in_features
     model.fc = nn.Linear(num_features, num_classes)
     model.to('cuda')
 
