@@ -27,7 +27,7 @@ def train_model():
     train_loss = 0.0
     train_acc = 0.0
     train_pre=0.0
-    train_recall=0.0
+    train_rec=0.0
     train_f1=0.0
     model.train()
 
@@ -57,7 +57,7 @@ def train_model():
         prediction = logits.argmax(axis=1)
         train_acc += accuracy(prediction, label, task='multiclass', average='macro', num_classes=2).item()
         train_pre+=precision(prediction, label, task='multiclass', average='macro', num_classes=2).item()
-        train_rec_=recall(prediction, label, task='multiclass', average='macro', num_classes=2).item()
+        train_rec+=recall(prediction, label, task='multiclass', average='macro', num_classes=2).item()
         train_f1+=f1_score(prediction, label, task='multiclass', average='macro', num_classes=2).item()
 
     return train_loss / len(train_loader), train_acc / len(train_loader),train_pre / len(train_loader),train_rec / len(train_loader), train_f1 / len(train_loader)
@@ -72,7 +72,7 @@ def validate_model():
     valid_loss = 0.0
     val_acc = 0.0
     val_pre=0.0
-    val_recall=0.0
+    val_rec=0.0
     val_f1=0.0
     with torch.no_grad():
         for (img, label) in tqdm(val_loader, ncols=80, desc='Valid'):
@@ -92,7 +92,7 @@ def validate_model():
             prediction = logits.argmax(axis=1)
             val_acc += accuracy(prediction, label, task='multiclass', average='macro', num_classes=2).item()
             val_pre+=precision(prediction, label, task='multiclass', average='macro', num_classes=2).item()
-            val_rec_=recall(prediction, label, task='multiclass', average='macro', num_classes=2).item()
+            val_rec+=recall(prediction, label, task='multiclass', average='macro', num_classes=2).item()
             val_f1+=f1_score(prediction, label, task='multiclass', average='macro', num_classes=2).item()
     return valid_loss / len(val_loader), val_acc / len(val_loader),val_pre / len(val_loader),val_rec / len(val_loader), val_f1 / len(val_loader)
 
