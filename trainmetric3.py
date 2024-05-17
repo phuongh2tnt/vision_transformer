@@ -172,7 +172,7 @@ if __name__ == "__main__":
         acc_vals.append((epoch, val_acc))
         loss_trains.append((epoch, train_loss))
         loss_vals.append((epoch, val_loss))
-        pre_trains.append((epoch, train_pre)
+        pre_trains.append((epoch, train_pre))
         pre_vals.append((epoch, val_pre))
         rec_trains.append((epoch, train_rec))
         rec_vals.append((epoch, val_rec))
