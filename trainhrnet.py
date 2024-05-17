@@ -182,7 +182,7 @@ if __name__ == "__main__":
         # 4.3. Save the model if the validation accuracy is increasing
         if val_acc > max_acc:
             print(f'Validation accuracy increased ({max_acc} --> {val_acc}). Model saved')
-            torch.save(model.state_dict(),'/content/drive/My Drive/AI/el/checkpoints/2epoch_' + str(epoch) + '_acc_{0:.4f}'.format(max_acc) + '.pt')
+            torch.save(model.state_dict(),'/content/drive/My Drive/AI/el/checkpoints/hrepoch_' + str(epoch) + '_acc_{0:.4f}'.format(max_acc) + '.pt')
             max_acc = val_acc
     
     #in mang
@@ -209,7 +209,7 @@ if __name__ == "__main__":
     plt.title('Trainning Accuracy vs. Epochs')
     plt.legend()
     plt.grid(True)
-    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/train_acc.png')
+    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/hrtrain_acc.png')
     plt.show()
     # Plotting
     print("Ve mo hinh val_accs")
@@ -223,7 +223,7 @@ if __name__ == "__main__":
     plt.title('Validation Accuray vs. Epochs')
     plt.legend()
     plt.grid(True)
-    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/val_acc.png')
+    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/hrval_acc.png')
     plt.show()
     # Plotting
     plt.figure(figsize=(12, 6))
@@ -239,7 +239,7 @@ if __name__ == "__main__":
     plt.title('Trainning Loss vs. Epochs')
     plt.legend()
     plt.grid(True)
-    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/train_loss.png')
+    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/hrtrain_loss.png')
     plt.show()
     print("Ve mo hinh val_loss")
     x3 = [row[0] for row in val_losss]
@@ -252,7 +252,7 @@ if __name__ == "__main__":
     plt.title('Validation Loss vs. Epochs')
     plt.legend()
     plt.grid(True)
-    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/val_loss.png')
+    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/hrval_loss.png')
     plt.show()
     
    #-----------------------metric moi-----------
@@ -266,7 +266,7 @@ if __name__ == "__main__":
     plt.title('Trainning Precision vs. Epochs')
     plt.legend()
     plt.grid(True)
-    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/train_pre.png')
+    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/hrtrain_pre.png')
     plt.show()
 
     x5 = [row[0] for row in val_pres]
@@ -279,7 +279,7 @@ if __name__ == "__main__":
     plt.title('Validation Precision vs. Epochs')
     plt.legend()
     plt.grid(True)
-    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/val_pre.png')
+    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/hrval_pre.png')
     plt.show()
       #-----------------
     x6 = [row[0] for row in train_recs]
@@ -292,7 +292,7 @@ if __name__ == "__main__":
     plt.title('Trainning recall vs. Epochs')
     plt.legend()
     plt.grid(True)
-    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/rec_train.png')
+    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/hrrec_train.png')
     plt.show()
 
     x7 = [row[0] for row in val_recs]
@@ -305,7 +305,7 @@ if __name__ == "__main__":
     plt.title('Validation recall vs. Epochs')
     plt.legend()
     plt.grid(True)
-    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/rec_val.png')
+    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/hrrec_val.png')
     plt.show()
        #-----------------
     x8 = [row[0] for row in train_f1s]
@@ -318,7 +318,7 @@ if __name__ == "__main__":
     plt.title('Trainning f1_score vs. Epochs')
     plt.legend()
     plt.grid(True)
-    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/f1score_train.png')
+    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/hrf1score_train.png')
     plt.show()
 
     x9 = [row[0] for row in val_f1s]
@@ -331,7 +331,7 @@ if __name__ == "__main__":
     plt.title('Validation f2_socre vs. Epochs')
     plt.legend()
     plt.grid(True)
-    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/rec_val.png')
+    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/hrrec_val.png')
     plt.show()
     #plt.savefig('/content/drive/My Drive/AI/el/checkpoints/trainacc2.png')
     
