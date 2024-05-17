@@ -134,7 +134,27 @@ if __name__ == "__main__":
     acc_vals=[]
     loss_trains=[]
     loss_vals=[]
+   #me tric moi
+    pre_trains=[]
+    pre_vals=[]
+    rec_trains=[]
+    rec_vals=[]
+    f1_trains=[]
+    f1_vals=[]
+    #khởi tạo metric moi
+    train_accs=[]
+    val_accs=[]
+    train_losss=[]
+    val_losss=[]
+    train_pres=[]
+    val_pres=[]
+    train_recs=[]
+    val_recs=[]
+    train_f1s=[]
+    val_f1s=[] 
+    
     epochs=3
+    
     for epoch in range(epochs):
 
         # 5.1. Train the model over a single epoch
@@ -152,6 +172,12 @@ if __name__ == "__main__":
         acc_vals.append((epoch, val_acc))
         loss_trains.append((epoch, train_loss))
         loss_vals.append((epoch, val_loss))
+        pre_trains.append((epoch, train_pre)
+        pre_vals.append((epoch, val_pre)
+        rec_trains.append((epoch, train_rec)
+        rec_vals.append((epoch, val_rec)
+        f1_trains.append((epoch, train_f1)
+        f1_vals.append((epoch, val_f1)
         # 4.3. Save the model if the validation accuracy is increasing
         if val_acc > max_acc:
             print(f'Validation accuracy increased ({max_acc} --> {val_acc}). Model saved')
@@ -163,6 +189,12 @@ if __name__ == "__main__":
     val_accs=np.array(acc_vals)
     train_losss=np.array(loss_trains)
     val_losss=np.array(loss_vals)
+    train_pres=np.array(pre_trains)
+    val_pres=np.array(pre_vals)
+    train_recs=np.array(rec_trains)
+    val_recs=np.array(rec_vals)
+    train_f1s=np.array(f1_trains)
+    val_f1s=np.array(f1_vals)     
     second = [row[1] for row in train_accs]
     print(second)
     print("Ve mo hinh train_accs")
@@ -193,6 +225,7 @@ if __name__ == "__main__":
     # Plotting
     plt.figure(figsize=(12, 6))
     print("Ve mo hinh train_loss")
+    
     x2 = [row[0] for row in train_losss]
     y2 = [row[1] for row in train_losss]
     
@@ -218,16 +251,76 @@ if __name__ == "__main__":
     plt.show()
     
    #-----------------------metric moi-----------
-    x = [row[0] for row in train_accs]
-    y = [row[1] for row in train_accs]
+    x4 = [row[0] for row in train_pres]
+    y4 = [row[1] for row in train_pres]
     
     # Plot
-    plt.plot(x, y, marker='o', linestyle='-')
+    plt.plot(x4, y4, marker='o', linestyle='-')
     plt.xlabel('epoch')
-    plt.ylabel('Trainning Accuracy')
-    plt.title('Trainning Accuracy vs. Epochs')
+    plt.ylabel('Trainning Precision')
+    plt.title('Trainning Precision vs. Epochs')
     plt.grid(True)
-    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/train_acc.png')
+    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/train_pre.png')
+    plt.show()
+
+    x5 = [row[0] for row in val_pres]
+    y5 = [row[1] for row in val_pres]
+    
+    # Plot
+    plt.plot(x5, y5, marker='o', linestyle='-')
+    plt.xlabel('epoch')
+    plt.ylabel('Validation Precision')
+    plt.title('Validation Precision vs. Epochs')
+    plt.grid(True)
+    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/val_pre.png')
+    plt.show()
+      #-----------------
+    x6 = [row[0] for row in train_recs]
+    y6 = [row[1] for row in train_recs]
+    
+    # Plot
+    plt.plot(x6, y6, marker='o', linestyle='-')
+    plt.xlabel('epoch')
+    plt.ylabel('Trainning recal')
+    plt.title('Trainning recal vs. Epochs')
+    plt.grid(True)
+    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/rec_train.png')
+    plt.show()
+
+    x7 = [row[0] for row in val_recs]
+    y7 = [row[1] for row in val_recs]
+    
+    # Plot
+    plt.plot(x7, y7, marker='o', linestyle='-')
+    plt.xlabel('epoch')
+    plt.ylabel('Validation recal')
+    plt.title('Validation recal vs. Epochs')
+    plt.grid(True)
+    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/rec_val.png')
+    plt.show()
+       #-----------------
+    x8 = [row[0] for row in train_f1s]
+    y8 = [row[1] for row in train_f1s]
+    
+    # Plot
+    plt.plot(x8, y8, marker='o', linestyle='-')
+    plt.xlabel('epoch')
+    plt.ylabel('Trainning f1_score')
+    plt.title('Trainning f1_score vs. Epochs')
+    plt.grid(True)
+    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/f1score_train.png')
+    plt.show()
+
+    x9 = [row[0] for row in val_f1s]
+    y9 = [row[1] for row in val_f1s]
+    
+    # Plot
+    plt.plot(x9, y9, marker='o', linestyle='-')
+    plt.xlabel('epoch')
+    plt.ylabel('Validation f2_socre')
+    plt.title('Validation f2_socre vs. Epochs')
+    plt.grid(True)
+    plt.savefig('/content/drive/My Drive/AI/el/checkpoints/rec_val.png')
     plt.show()
     #plt.savefig('/content/drive/My Drive/AI/el/checkpoints/trainacc2.png')
     
