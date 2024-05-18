@@ -218,7 +218,8 @@ if __name__ == "__main__":
     print("Ve mo hinh val_accs")
     x1 = [row[0] for row in val_accs]
     y1 = [row[1] for row in val_accs]
-    
+    accval_tb=sum(y1)/len(y1)
+    print(f'Do chinh xac validation={accval_tb}')
     # Plot
     plt.plot(x1, y1, marker='o', linestyle='-')
     plt.xlabel('epoch')
@@ -234,7 +235,8 @@ if __name__ == "__main__":
     
     x2 = [row[0] for row in train_losss]
     y2 = [row[1] for row in train_losss]
-    
+    losstrain_tb=sum(y2)/len(y2)
+    print(f'Do mat mat trainning={losstrain_tb}')
     # Plot
     plt.plot(x2, y2, marker='o', linestyle='-')
     plt.xlabel('epoch')
@@ -247,7 +249,8 @@ if __name__ == "__main__":
     print("Ve mo hinh val_loss")
     x3 = [row[0] for row in val_losss]
     y3 = [row[1] for row in val_losss]
-    
+    lossval_tb=sum(y3)/len(y3)
+    print(f'Do mat mat validation={lossval_tb}')
     # Plot
     plt.plot(x3, y3, marker='o', linestyle='-')
     plt.xlabel('epoch')
@@ -261,7 +264,8 @@ if __name__ == "__main__":
    #-----------------------metric moi-----------
     x4 = [row[0] for row in train_pres]
     y4 = [row[1] for row in train_pres]
-    
+    pretrain_tb=sum(y4)/len(y4)
+    print(f'Precision train={pretrain_tb}')
     # Plot
     plt.plot(x4, y4, marker='o', linestyle='-')
     plt.xlabel('epoch')
@@ -274,7 +278,8 @@ if __name__ == "__main__":
 
     x5 = [row[0] for row in val_pres]
     y5 = [row[1] for row in val_pres]
-    
+    preval_tb=sum(y5)/len(y5)
+    print(f'Precision validation=={preval_tb}')
     # Plot
     plt.plot(x5, y5, marker='o', linestyle='-')
     plt.xlabel('epoch')
@@ -287,7 +292,8 @@ if __name__ == "__main__":
       #-----------------
     x6 = [row[0] for row in train_recs]
     y6 = [row[1] for row in train_recs]
-    
+    rectrain_tb=sum(y6)/len(y6)
+    print(f'Recall train={rectrain_tb}')
     # Plot
     plt.plot(x6, y6, marker='o', linestyle='-')
     plt.xlabel('epoch')
@@ -300,7 +306,8 @@ if __name__ == "__main__":
 
     x7 = [row[0] for row in val_recs]
     y7 = [row[1] for row in val_recs]
-    
+    recval_tb=sum(y7)/len(y7)
+    print(f'Recall train={recval_tb}')
     # Plot
     plt.plot(x7, y7, marker='o', linestyle='-')
     plt.xlabel('epoch')
@@ -313,7 +320,8 @@ if __name__ == "__main__":
        #-----------------
     x8 = [row[0] for row in train_f1s]
     y8 = [row[1] for row in train_f1s]
-    
+    trainf1_tb=sum(y8)/len(y8)
+    print(f'train f1_score={trainf1_tb}')
     # Plot
     plt.plot(x8, y8, marker='o', linestyle='-')
     plt.xlabel('epoch')
@@ -327,11 +335,13 @@ if __name__ == "__main__":
     x9 = [row[0] for row in val_f1s]
     y9 = [row[1] for row in val_f1s]
     
+    valf1_tb=sum(y9)/len(y9)
+    print(f'val f1_score={valf1_tb}')
     # Plot
     plt.plot(x9, y9, marker='o', linestyle='-')
     plt.xlabel('epoch')
-    plt.ylabel('Validation f2_socre')
-    plt.title('Validation f2_socre vs. Epochs')
+    plt.ylabel('Validation f1_socre')
+    plt.title('Validation f1_socre vs. Epochs')
     plt.legend()
     plt.grid(True)
     plt.savefig('/content/drive/My Drive/AI/el/checkpoints/rec_val.png')
