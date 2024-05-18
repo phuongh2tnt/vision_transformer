@@ -154,7 +154,7 @@ if __name__ == "__main__":
     train_f1s=[]
     val_f1s=[] 
     
-    epochs=100
+    epochs=2
 
     
     for epoch in range(epochs):
