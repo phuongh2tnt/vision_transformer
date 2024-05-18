@@ -202,6 +202,7 @@ if __name__ == "__main__":
     x = [row[0] for row in train_accs]
     y = [row[1] for row in train_accs]
     
+    
     # Plot
     plt.plot(x, y, marker='o', linestyle='-')
     plt.xlabel('epoch')
