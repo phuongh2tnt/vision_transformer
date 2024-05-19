@@ -234,8 +234,8 @@ if __name__ == "__main__":
     print("Ve mo hinh train_loss")
     #---------ve hai do thi --------------
     plt.subplot(2, 2, 2)
-    plt.plot(x, y, marker='o', linestyle='-','g', label='Trainning accuracy')
-    plt.plot(x1, y1, marker='+', linestyle='-','b',label='Validation accuracy')
+    plt.plot(x, y, marker='o', linestyle='-',color='g', label='Trainning accuracy')
+    plt.plot(x1, y1, marker='+', linestyle='-',color='b',label='Validation accuracy')
     plt.xlabel('epoch')
     plt.ylabel('Accuracy')
     plt.title('Accuracy vs. Epochs')
