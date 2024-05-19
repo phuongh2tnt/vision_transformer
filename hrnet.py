@@ -208,8 +208,8 @@ if __name__ == "__main__":
     # Plot
     plt.plot(x, y, marker='o', linestyle='-')
     plt.xlabel('epoch')
-    plt.ylabel('Trainning Accuracy')
-    plt.title('Trainning Accuracy vs. Epochs')
+    plt.ylabel('Training Accuracy')
+    plt.title('Training Accuracy vs. Epochs')
     plt.legend()
     plt.grid(True)
     plt.savefig('/content/drive/My Drive/AI/el/hrcheckpoints/train_acc.png')
@@ -234,7 +234,7 @@ if __name__ == "__main__":
     print("Ve mo hinh train_loss")
     #---------ve hai do thi --------------
     plt.subplot(2, 2, 2)
-    plt.plot(x, y, marker='o', linestyle='-',color='g', label='Trainning accuracy')
+    plt.plot(x, y, marker='o', linestyle='-',color='g', label='Training accuracy')
     plt.plot(x1, y1, marker='+', linestyle='-',color='b',label='Validation accuracy')
     plt.xlabel('epoch')
     plt.ylabel('Accuracy')
@@ -247,12 +247,12 @@ if __name__ == "__main__":
     x2 = [row[0] for row in train_losss]
     y2 = [row[1] for row in train_losss]
     losstrain_tb=sum(y2)/len(y2)
-    print(f'Do mat mat trainning={losstrain_tb}')
+    print(f'Do mat mat training={losstrain_tb}')
     # Plot
     plt.plot(x2, y2, marker='o', linestyle='-')
     plt.xlabel('epoch')
-    plt.ylabel('Trainning Loss')
-    plt.title('Trainning Loss vs. Epochs')
+    plt.ylabel('Training Loss')
+    plt.title('Training Loss vs. Epochs')
     plt.legend()
     plt.grid(True)
     plt.savefig('/content/drive/My Drive/AI/el/hrcheckpoints/train_loss.png')
@@ -262,6 +262,18 @@ if __name__ == "__main__":
     y3 = [row[1] for row in val_losss]
     lossval_tb=sum(y3)/len(y3)
     print(f'Do mat mat validation={lossval_tb}')
+     #---------ve hai do thi --------------
+    plt.subplot(2, 2, 2)
+    plt.plot(x2, y2, marker='o', linestyle='-',color='g', label='Training loss')
+    plt.plot(x3, y3, marker='+', linestyle='-',color='b',label='Validation loss')
+    plt.xlabel('epoch')
+    plt.ylabel('Loss')
+    plt.title('Loss vs. Epochs')
+    plt.legend()
+    plt.grid(True)
+    plt.savefig('/content/drive/My Drive/AI/el/hrcheckpoints/loss.png')
+    plt.show()
+    #---------------------------------------------
     # Plot
     plt.plot(x3, y3, marker='o', linestyle='-')
     plt.xlabel('epoch')
@@ -280,8 +292,8 @@ if __name__ == "__main__":
     # Plot
     plt.plot(x4, y4, marker='o', linestyle='-')
     plt.xlabel('epoch')
-    plt.ylabel('Trainning Precision')
-    plt.title('Trainning Precision vs. Epochs')
+    plt.ylabel('Training Precision')
+    plt.title('Training Precision vs. Epochs')
     plt.legend()
     plt.grid(True)
     plt.savefig('/content/drive/My Drive/AI/el/hrcheckpoints/train_pre.png')
@@ -301,6 +313,18 @@ if __name__ == "__main__":
     plt.savefig('/content/drive/My Drive/AI/el/hrcheckpoints/val_pre.png')
     plt.show()
       #-----------------
+      #---------ve hai do thi --------------
+    plt.subplot(2, 2, 2)
+    plt.plot(x4, y4, marker='o', linestyle='-',color='g', label='Training precision')
+    plt.plot(x5, y5, marker='+', linestyle='-',color='b',label='Validation precision')
+    plt.xlabel('epoch')
+    plt.ylabel('Precision')
+    plt.title('Precision vs. Epochs')
+    plt.legend()
+    plt.grid(True)
+    plt.savefig('/content/drive/My Drive/AI/el/hrcheckpoints/pre.png')
+    plt.show()
+    #---------------------------------------------
     x6 = [row[0] for row in train_recs]
     y6 = [row[1] for row in train_recs]
     rectrain_tb=sum(y6)/len(y6)
@@ -308,8 +332,8 @@ if __name__ == "__main__":
     # Plot
     plt.plot(x6, y6, marker='o', linestyle='-')
     plt.xlabel('epoch')
-    plt.ylabel('Trainning recall')
-    plt.title('Trainning recall vs. Epochs')
+    plt.ylabel('Training recall')
+    plt.title('Training recall vs. Epochs')
     plt.legend()
     plt.grid(True)
     plt.savefig('/content/drive/My Drive/AI/el/hrcheckpoints/rec_train.png')
@@ -329,6 +353,18 @@ if __name__ == "__main__":
     plt.savefig('/content/drive/My Drive/AI/el/hrcheckpoints/rec_val.png')
     plt.show()
        #-----------------
+    #---------ve hai do thi --------------
+    plt.subplot(2, 2, 2)
+    plt.plot(x6, y6, marker='o', linestyle='-',color='g', label='Training recall')
+    plt.plot(x7, y7, marker='+', linestyle='-',color='b',label='Validation recall')
+    plt.xlabel('epoch')
+    plt.ylabel('Recall')
+    plt.title('Recall vs. Epochs')
+    plt.legend()
+    plt.grid(True)
+    plt.savefig('/content/drive/My Drive/AI/el/hrcheckpoints/rec.png')
+    plt.show()
+    #---------------------------------------------
     x8 = [row[0] for row in train_f1s]
     y8 = [row[1] for row in train_f1s]
     trainf1_tb=sum(y8)/len(y8)
@@ -336,8 +372,8 @@ if __name__ == "__main__":
     # Plot
     plt.plot(x8, y8, marker='o', linestyle='-')
     plt.xlabel('epoch')
-    plt.ylabel('Trainning f1_score')
-    plt.title('Trainning f1_score vs. Epochs')
+    plt.ylabel('Training f1_score')
+    plt.title('Training f1_score vs. Epochs')
     plt.legend()
     plt.grid(True)
     plt.savefig('/content/drive/My Drive/AI/el/hrcheckpoints/f1score_train.png')
@@ -355,10 +391,21 @@ if __name__ == "__main__":
     plt.title('Validation f1_socre vs. Epochs')
     plt.legend()
     plt.grid(True)
-    plt.savefig('/content/drive/My Drive/AI/el/hrcheckpoints/rec_val.png')
+    plt.savefig('/content/drive/My Drive/AI/el/hrcheckpoints/f1_val.png')
     plt.show()
     #plt.savefig('/content/drive/My Drive/AI/el/checkpoints/trainacc2.png')
-    
+    #---------ve hai do thi --------------
+    plt.subplot(2, 2, 2)
+    plt.plot(x4, y4, marker='o', linestyle='-',color='g', label='Training f1_score')
+    plt.plot(x5, y5, marker='+', linestyle='-',color='b',label='Validation f1_score')
+    plt.xlabel('epoch')
+    plt.ylabel('f1_score')
+    plt.title('f1_score vs. Epochs')
+    plt.legend()
+    plt.grid(True)
+    plt.savefig('/content/drive/My Drive/AI/el/hrcheckpoints/f1.png')
+    plt.show()
+    #---------------------------------------------
     #plt.show()
     
     #plt.subplot(2, 2, 2)
