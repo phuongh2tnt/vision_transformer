@@ -95,12 +95,14 @@ if __name__ == "__main__":
     val_loader = DataLoader(val_dataset, batch_size=32, shuffle=True)
 
     # 3. Create a new deep model with pre-trained weights
+    #mo hinh transformer for image-------------------------
     import torchvision.models as models
     from torchvision.models import ViT_B_16_Weights
     model = models.vit_b_16(weights=ViT_B_16_Weights.DEFAULT, num_classes=1000)
     #fine tune vit
     num_classes = 2  # Example: for a dataset with 10 classes
     model.heads.head = torch.nn.Linear(model.heads.head.in_features, num_classes)
+    #----------------------------------------------------------------------
     #3.1. Create a new deep model use timm
     #model=timm.create_model('hrnet_w18', pretrained=True, num_classes=2).to('cuda')
 
