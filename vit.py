@@ -88,7 +88,7 @@ if __name__ == "__main__":
     # 1. Load the dataset
     transform = transforms.Compose([Resize((256, 256)), ToTensor()])
     train_dataset = ImageFolder(root='googlenet/dataset/cat_dog/train', transform=transform)
-    val_dataset = ImageFolder(root=''googlenet/dataset/cat_dog/test', transform=transform)
+    val_dataset = ImageFolder(root='googlenet/dataset/cat_dog/test', transform=transform)
 
     # 2. Create data loaders
     train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
