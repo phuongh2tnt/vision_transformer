@@ -19,11 +19,11 @@ if __name__ == "__main__":
     model.to('cuda')
 
     # 2. Load the weights trained on the Cat-Dog dataset
-    model.load_state_dict(torch.load('checkpoints/epoch_8_acc_0.9750.pt', 'cuda'))
+    model.load_state_dict(torch.load('vision_transformer/checkpoints/epoch_8_acc_0.9750.pt', 'cuda'))
     model.eval()
 
     # 3. Load an input image
-    img = Image.open('dataset/cat_dog/test/dogs/dog_521.jpg')
+    img = Image.open('vision_transformer/dataset/cat_dog/test/dogs/dog_521.jpg')
     plt.imshow(img)
     plt.show()
 
