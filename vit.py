@@ -87,6 +87,7 @@ if __name__ == "__main__":
 
     # 1. Load the dataset
     transform = transforms.Compose([Resize((224, 224)), ToTensor()])
+    #Đoạn nay thay đường dẫn lại, trong trường hợp này đang dùng github của em là googlenet
     train_dataset = ImageFolder(root='googlenet/dataset/cat_dog/train', transform=transform)
     val_dataset = ImageFolder(root='googlenet/dataset/cat_dog/test', transform=transform)
 
