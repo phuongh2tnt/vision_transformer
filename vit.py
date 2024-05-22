@@ -107,9 +107,9 @@ if __name__ == "__main__":
     # 4. Note that the model pre-trained model has 1,000 output neurons (because ImageNet has 1,000 classes), so we must
     # customize the last linear layer to adapt to our 2-class problem (i.e., Cat vs Dog)
     #cua torchvision cu
-    num_features = model.fc.in_features
-    model.fc = torch.nn.Linear(num_features, 2)
-    num_classes=2
+    #num_features = model.fc.in_features
+    #model.fc = torch.nn.Linear(num_features, 2)
+    #num_classes=2
     #num_features = model.fc.in_features
     #model.fc = nn.Linear(num_features, num_classes)
     model.to('cuda')
