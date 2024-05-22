@@ -87,8 +87,8 @@ if __name__ == "__main__":
 
     # 1. Load the dataset
     transform = transforms.Compose([Resize((256, 256)), ToTensor()])
-    train_dataset = ImageFolder(root='dataset/cat_dog/train', transform=transform)
-    val_dataset = ImageFolder(root='dataset/cat_dog/test', transform=transform)
+    train_dataset = ImageFolder(root='googlenet/dataset/cat_dog/train', transform=transform)
+    val_dataset = ImageFolder(root=''googlenet/dataset/cat_dog/test', transform=transform)
 
     # 2. Create data loaders
     train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
@@ -130,5 +130,5 @@ if __name__ == "__main__":
         # 4.3. Save the model if the validation accuracy is increasing
         if val_acc > max_acc:
             print(f'Validation accuracy increased ({max_acc} --> {val_acc}). Model saved')
-            torch.save(model.state_dict(),'checkpoints/epoch_' + str(epoch) + '_acc_{0:.4f}'.format(max_acc) + '.pt')
+            torch.save(model.state_dict(),'googlenet/checkpoints/epoch_' + str(epoch) + '_acc_{0:.4f}'.format(max_acc) + '.pt')
             max_acc = val_acc
